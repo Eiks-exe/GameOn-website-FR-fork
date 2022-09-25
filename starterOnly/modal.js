@@ -42,13 +42,13 @@ function launchModal() {
 // close modal function
 
 function closeModal() {
-  modalbg.style.display= "none"
+  modalbg.style.display = "none"
 }
 
 
 // validate 
 
-function validate(event){ 
+function validate(event) {
   event.preventDefault();
   removeError()
   isntValid("first")
@@ -58,7 +58,7 @@ function validate(event){
   isntValid("quantity")
   isntValid("checked")
   isntValid("location")
-  if( isntValid("first") || isntValid("last") || isntValid("email") || isntValid("quantity") || isntValid("checked") || isntValid("location") || isntValid("birthDate") ){
+  if (isntValid("first") || isntValid("last") || isntValid("email") || isntValid("quantity") || isntValid("checked") || isntValid("location") || isntValid("birthDate")) {
     console.log("hmm");
     return false
   } else {
@@ -73,61 +73,61 @@ function validate(event){
 function removeError() {
   let errorInputs = document.querySelectorAll('.formData[data-error-visible="true"]')
   errorInputs.forEach(input => {
-   input.setAttribute("data-error-visible", false);
-   input.setAttribute("data-error", "");
+    input.setAttribute("data-error-visible", false);
+    input.setAttribute("data-error", "");
   });
 }
 
 function isntValid(input) {
   const validInput = {
-    "first" : {
-      "input" : nameForm , 
-      valid : () => { return nameValidation(nameForm.value) === true},
+    "first": {
+      "input": nameForm,
+      valid: () => { return nameValidation(nameForm.value) === true },
       "errorMessage": "Veuillez entrer un prénom comportant 2 caractères ou plus."
     },
-    "last" : {
-      "input" : lastForm ,
-      valid: () => {return lastValidation(lastForm.value) === true},
+    "last": {
+      "input": lastForm,
+      valid: () => { return lastValidation(lastForm.value) === true },
       "errorMessage": "Veuillez entrer un Nom comportant 2 caractères ou plus."
     },
     "email": {
-      "input" : emailForm,
-      valid: () => {return emailValidation(emailForm.value) === true},
+      "input": emailForm,
+      valid: () => { return emailValidation(emailForm.value) === true },
       "errorMessage": "Veuillez entrer une adresse email valide."
     },
-    "birthDate" : {
+    "birthDate": {
       "input": birthDateForm,
-      valid: () => {return birthDateValidation(birthDateForm) === true},
+      valid: () => { return birthDateValidation(birthDateForm) === true },
       "errorMessage": "Veuillez entrée une date valide"
     },
     "quantity": {
-      "input" : qForm,
-      valid: () => {return QuantityValidation(qForm)=== true},
+      "input": qForm,
+      valid: () => { return QuantityValidation(qForm) === true },
       "errorMessage": "Veuillez entrer un nombre valide"
     },
-    "checked":{
-      "input" : checkboxInput,
-      valid: () => {return checkboxValidation(checkboxInput )=== true},
+    "checked": {
+      "input": checkboxInput,
+      valid: () => { return checkboxValidation(checkboxInput) === true },
       "errorMessage": "Veuillez accepter les conditions d'utilisations."
     },
     "location": {
       "input": radioButtons,
-      valid : () => {return locationValidation(radioButtons) === true},
+      valid: () => { return locationValidation(radioButtons) === true },
       "errorMessage": "Veuillez choisir une position"
     }
   }
   if (!validInput[input].valid()) {
-    if(validInput[input].input === radioButtons) {
+    if (validInput[input].input === radioButtons) {
       checkboxLabel.setAttribute("data-error-visible", true)
       checkboxLabel.setAttribute("data-error", validInput[input].errorMessage)
-
     }
-    console.log("ok",validInput["first"]["input"]["id"])
-    validInput[input].input.parentNode.setAttribute("data-error-visible" , true)
-    validInput[input].input.parentNode.setAttribute("data-error" , validInput[input].errorMessage)
-    console.log(validInput[input].errorMessage);
+    else {
+      validInput[input].input.parentNode.setAttribute("data-error-visible", true)
+      validInput[input].input.parentNode.setAttribute("data-error", validInput[input].errorMessage)
+      console.log(validInput[input].errorMessage);
+    }
   }
-  else{
+  else {
     return false;
   }
   inputObject = Object.entries(validInput)
@@ -137,19 +137,19 @@ function isntValid(input) {
 
 // validation rules
 function nameValidation(entry) {
-  if(entry.length < 2) {
+  if (entry.length < 2) {
     return false;
   }
-    return true;
+  return true;
 
 }
 
 function lastValidation(entry) {
-  if(entry.length < 2) {
+  if (entry.length < 2) {
     return false;
   }
-    return true;
-} 
+  return true;
+}
 
 function emailValidation(entry) {
   let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
@@ -157,20 +157,20 @@ function emailValidation(entry) {
 }
 
 function QuantityValidation(entry) {
-  console.log(entry.value ,isNaN(entry.value))
-  if(!entry.value){
+  console.log(entry.value, isNaN(entry.value))
+  if (!entry.value) {
     return false;
   }
-  else{
+  else {
     return true;
   }
 }
 
 function locationValidation() {
-	for (let radio of radioButtons) {
-		if (radio.checked === false) return false;
+  for (let radio of radioButtons) {
+    if (radio.checked === false) return false;
     return true;
-	}
+  }
   radioButtons.forEach((radio) => {
     if (!radio.checked) return false;
     return true;
@@ -178,7 +178,7 @@ function locationValidation() {
 }
 
 function checkboxValidation() {
-	return checkboxInput.checked;
+  return checkboxInput.checked;
 }
 
 function birthDateValidation(entry) {
