@@ -63,6 +63,7 @@ function closeCmodal() {
 function validate(event) {
   event.preventDefault();
   removeError()
+  console.log(isntValid("first") === true)
   isntValid("first")
   isntValid("last")
   isntValid("email")
@@ -133,11 +134,12 @@ function isntValid(input) {
     if (validInput[input].input === radioButtons) {
       checkboxLabel.setAttribute("data-error-visible", true)
       checkboxLabel.setAttribute("data-error", validInput[input].errorMessage)
+      return true
     }
     else {
       validInput[input].input.parentNode.setAttribute("data-error-visible", true)
       validInput[input].input.parentNode.setAttribute("data-error", validInput[input].errorMessage)
-      console.log(validInput[input].errorMessage);
+      return true
     }
   }
   else {
@@ -169,7 +171,6 @@ function emailValidation(entry) {
 }
 
 function QuantityValidation(entry) {
-  console.log(entry.value, isNaN(entry.value))
   if (!entry.value) {
     return false;
   }
