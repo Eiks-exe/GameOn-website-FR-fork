@@ -26,11 +26,15 @@ const qForm = document.querySelector("#quantity");
 const birthDateForm = document.querySelector("#birthdate")
 const checkboxLabel = document.querySelector(".checkboxesContainer")
 
+const confirmModal = document.querySelector(".confirm-modal");
+
+//Events
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 //close modal event
 
 modalCross.addEventListener("click", closeModal);
+
 
 
 // launch modal form
@@ -43,6 +47,14 @@ function launchModal() {
 
 function closeModal() {
   modalbg.style.display = "none"
+}
+// confirmModal
+function launchCmodal() {
+  confirmModal.style.display = "block";
+}
+
+function closeCmodal() {
+  confirmModal.style.display = "none";
 }
 
 
@@ -58,11 +70,12 @@ function validate(event) {
   isntValid("quantity")
   isntValid("checked")
   isntValid("location")
-  if (isntValid("first") || isntValid("last") || isntValid("email") || isntValid("quantity") || isntValid("checked") || isntValid("location") || isntValid("birthDate")) {
-    console.log("hmm");
-    return false
+  if (isntValid("first") === true || isntValid("last") === true || isntValid("email") === true || isntValid("quantity") === true || isntValid("checked") === true || isntValid("location") === true || isntValid("birthDate") === true) {
+    return false;
   } else {
+    console.log("ok")
     closeModal();
+    launchCmodal();
   }
 }
 
@@ -130,8 +143,7 @@ function isntValid(input) {
   else {
     return false;
   }
-  inputObject = Object.entries(validInput)
-  //console.log(inputObject)
+
 }
 
 

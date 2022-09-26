@@ -527,3 +527,35 @@ footer {
   }
 }
 
+.confirm-modal {
+  display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(26, 39, 156, 0.4);
+  overflow-y: hidden;
+}
+.confirm-modal-message {
+  min-height: 300px;
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+.confirm-modal-btn {
+  font-size: 145%;
+  background: #fe142f;
+  display: flex;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  bottom: 100px;
+}
