@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCross = document.querySelector(".close");
-
+confirmCross=  document.querySelector(".confirm-close")
 
 //forms
 const form = document.querySelector("#register");
@@ -34,8 +34,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 //close modal event
 
 modalCross.addEventListener("click", closeModal);
-
-
+confirmCross.addEventListener("click", closeCmodal);
 
 // launch modal form
 function launchModal() {
