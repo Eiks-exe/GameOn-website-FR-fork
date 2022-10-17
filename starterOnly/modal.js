@@ -61,8 +61,10 @@ function validate(event) {
   if (isntValid("first") || isntValid("last") || isntValid("email") || isntValid("quantity") || isntValid("checked") || isntValid("location") || isntValid("birthDate")) {
     console.log("hmm");
     return false
-  } else {
-    closeModal();
+  } else if (!isntValid("first") && !isntValid("last") && !isntValid("email") && !isntValid("quantity") && !isntValid("checked") && !isntValid("location") && !isntValid("birthDate")) {
+    console.log("okay?")
+    closeModal()
+    
   }
 }
 
@@ -130,8 +132,8 @@ function isntValid(input) {
   else {
     return false;
   }
-  inputObject = Object.entries(validInput)
-  //console.log(inputObject)
+  
+ 
 }
 
 
