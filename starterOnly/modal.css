@@ -586,15 +586,18 @@ footer {
 
   .bground{
     background-color: rgba(0,0,0,0);
+    overflow-y: hidden;
   }
 
   .content{
-    height: 80%;
+    height: 100%;
     position: absolute;
-    top: 10%;
+    top: 5%;
+    overflow-y: hidden;
   }
   .header-logo > img{
-    width: 70%;
+    width: 50%;
+    margin-top: 5%;
     margin-left: 13%;
   }
   .main-navbar > .icon {
@@ -607,6 +610,12 @@ footer {
   .topnav{
     margin-bottom: 0;
     padding-bottom: 0;
+  }
+  .formData{
+    height:70%;
+  }
+  .formData > label {
+    margin-bottom: 0;
   }
 }
 

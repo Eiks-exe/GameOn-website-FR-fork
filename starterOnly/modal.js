@@ -70,11 +70,12 @@ function validate(event) {
   isntValid("quantity")
   isntValid("checked")
   isntValid("location")
-  if (isntValid("first") === true || isntValid("last") === true || isntValid("email") === true || isntValid("quantity") === true || isntValid("checked") === true || isntValid("location") === true || isntValid("birthDate") === true) {
-    return false;
-  } else {
-    console.log("ok")
-    closeModal();
+  if (isntValid("first") || isntValid("last") || isntValid("email") || isntValid("quantity") || isntValid("checked") || isntValid("location") || isntValid("birthDate")) {
+    console.log("hmm");
+    return false
+  } else if (!isntValid("first") && !isntValid("last") && !isntValid("email") && !isntValid("quantity") && !isntValid("checked") && !isntValid("location") && !isntValid("birthDate")) {
+    console.log("okay?")
+    closeModal()
     launchCmodal();
   }
 }
@@ -144,7 +145,6 @@ function isntValid(input) {
   else {
     return false;
   }
-
 }
 
 
