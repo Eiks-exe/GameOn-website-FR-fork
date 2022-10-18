@@ -12,7 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCross = document.querySelector(".close");
-confirmCross=  document.querySelector(".confirm-close")
+const confirmCross=  document.querySelector(".confirm-close")
+const closeBtn= document.querySelector(".confirm-modal-btn")
 
 //forms
 const form = document.querySelector("#register");
@@ -35,7 +36,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 modalCross.addEventListener("click", closeModal);
 confirmCross.addEventListener("click", closeCmodal);
-
+closeBtn.addEventListener("click", closeCmodal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -180,13 +181,11 @@ function QuantityValidation(entry) {
 
 function locationValidation() {
   for (let radio of radioButtons) {
-    if (radio.checked === false) return false;
-    return true;
-  }
-  radioButtons.forEach((radio) => {
-    if (!radio.checked) return false;
-    return true;
-  });
+    if (radio.checked){
+      return true
+    }
+    return false
+  } 
 }
 
 function checkboxValidation() {
