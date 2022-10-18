@@ -81,6 +81,12 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    position:absolute;
+    top: 5%;
+    right:5%;
+    z-index: 1;
+    background-color: #fff;
+    color:#e54858;
   }
 }
 
@@ -92,7 +98,9 @@ img {
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 5%;
+    background-color:#ff0000;
+    color:#fff ;
   }
 
   .topnav.responsive a {
@@ -528,6 +536,9 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+  main {
+    margin: 0 10px 0 10px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -553,12 +564,17 @@ footer {
   }
 
   .hero-text {
-    width: 85%;
-    font-size: 0.8rem;
+    width: 95%;
+    font-size: 0.9rem;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    margin-top: 10%;
+    margin: 10% 0 0 0;
+  }
+
+  .hero-headline, .hero-text {
+    position: relative;
+    right: 5%;
   }
 
   .hero-img img {
@@ -598,25 +614,41 @@ footer {
   .header-logo > img{
     width: 50%;
     margin-top: 5%;
-    margin-left: 13%;
+    margin-left: 2%;
   }
   .main-navbar > .icon {
     color:#e54858;
     font-size: 1.5rem;
     align-self: flex-end;
     justify-self: end;
-    padding-top: 40%;
+  }
+  .main-navbar > .icon:hover {
+    
+    justify-self: auto;
   }
   .topnav{
     margin-bottom: 0;
     padding-bottom: 0;
   }
+
   .formData{
     height:70%;
   }
   .formData > label {
     margin-bottom: 0;
   }
+  .confirm-modal-message {
+    text-align: center;
+    position: relative;
+    top: 10%;
+  }
+  .confirm-modal-btn {
+    position: relative;
+    top: 10%;
+  }
+  .confirm-modal{
+    position:absolute;
+    left:0;
 }
 
 @keyframes modalopen {
@@ -641,6 +673,7 @@ footer {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .confirm-modal-message {
@@ -662,4 +695,5 @@ footer {
   border: none;
   position: relative;
   bottom: 100px;
+}
 }
