@@ -31,6 +31,12 @@ p {
 img {
   padding-right: 1rem;
 }
+.confirm-body{
+  text-align: center;
+}
+.confirm-body >p{
+  color: #fff;
+}
 
 .topnav {
   overflow: hidden;
@@ -71,6 +77,27 @@ img {
 
 .topnav .icon {
   display: none;
+}
+
+.confirm-content{
+  height: 100%;
+  max-height: 500px;
+  position: absolute;
+  top: 5%;
+}
+
+.confirm-modal-btn {
+  font-size: 145%;
+  background: #fe142f;
+  display: flex;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 30%;
 }
 
 @media screen and (max-width: 768px) {
@@ -180,7 +207,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground, .bgroundConfirm {
   display: none;
   position: fixed;
   z-index: 1;
@@ -192,7 +219,8 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+
+.content, .confirm-content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -206,7 +234,10 @@ main {
   padding-top: 10px;
 }
 
-.modal-body {
+
+
+
+.modal-body, .confirm-body{
   padding: 15px 8%;
   margin: 15px auto;
 }
@@ -611,6 +642,12 @@ footer {
     top: 5%;
     overflow-y: hidden;
   }
+  .confirm-content{
+    height: 100%;
+    position: absolute;
+    top: 5%;
+    overflow-y: hidden;
+  }
   .header-logo > img{
     width: 50%;
     margin-top: 5%;
@@ -649,7 +686,11 @@ footer {
   .confirm-modal{
     position:absolute;
     left:0;
-}
+  }
+  
+  .confirm-content{
+    min-height: 95%;
+  }
 
 @keyframes modalopen {
   from {
@@ -682,18 +723,4 @@ footer {
   margin: 15px auto;
 }
 
-.confirm-modal-btn {
-  font-size: 145%;
-  background: #fe142f;
-  display: flex;
-  margin: auto;
-  padding: 2em;
-  color: #fff;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  border: none;
-  position: relative;
-  bottom: 100px;
-}
 }

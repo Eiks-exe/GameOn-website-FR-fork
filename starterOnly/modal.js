@@ -12,8 +12,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCross = document.querySelector(".close");
-const confirmCross=  document.querySelector(".confirm-close")
-const closeBtn= document.querySelector(".confirm-modal-btn")
+const confirmCross=  document.querySelector(".confirm-close");
+const closeBtn= document.querySelector(".confirm-modal-btn");
+const confirmModal = document.querySelector(".bgroundConfirm");
 
 //forms
 const form = document.querySelector("#register");
@@ -26,8 +27,7 @@ const emailForm = document.querySelector("#email");
 const qForm = document.querySelector("#quantity");
 const birthDateForm = document.querySelector("#birthdate")
 const checkboxLabel = document.querySelector(".checkboxesContainer")
-
-const confirmModal = document.querySelector(".confirm-modal");
+const cbLabel = document.querySelector(".cb-label")
 
 //Events
 // launch modal event
@@ -46,7 +46,7 @@ function launchModal() {
 // close modal function
 
 function closeModal() {
-  modalbg.style.display = "none"
+  modalbg.style.display = "none";
 }
 // confirmModal
 function launchCmodal() {
@@ -63,7 +63,7 @@ function closeCmodal() {
 function validate(event) {
   event.preventDefault();
   removeError()
-  console.log(isntValid("first") === true)
+  console.log(new Date().getTime())
   isntValid("first")
   isntValid("last")
   isntValid("email")
@@ -75,7 +75,6 @@ function validate(event) {
     console.log("hmm");
     return false
   } else if (!isntValid("first") && !isntValid("last") && !isntValid("email") && !isntValid("quantity") && !isntValid("checked") && !isntValid("location") && !isntValid("birthDate")) {
-    console.log("okay?")
     closeModal()
     launchCmodal();
   }
@@ -112,7 +111,7 @@ function isntValid(input) {
     },
     "birthDate": {
       "input": birthDateForm,
-      valid: () => { return birthDateValidation(birthDateForm) === true },
+      valid: () => { return birthDateValidation(birthDateForm.value) === true },
       "errorMessage": "Veuillez entrée une date valide"
     },
     "quantity": {
@@ -136,8 +135,12 @@ function isntValid(input) {
       checkboxLabel.setAttribute("data-error-visible", true)
       checkboxLabel.setAttribute("data-error", validInput[input].errorMessage)
       return true
-    }
-    else {
+    } else if (validInput[input].input === checkboxInput){
+      cbLabel.setAttribute("data-error-visible", true)
+      cbLabel.setAttribute("data-error", validInput[input].errorMessage)
+      console.log("cb" ,checkboxInput)
+      return true
+    } else {
       validInput[input].input.parentNode.setAttribute("data-error-visible", true)
       validInput[input].input.parentNode.setAttribute("data-error", validInput[input].errorMessage)
       return true
@@ -184,8 +187,8 @@ function locationValidation() {
     if (radio.checked){
       return true
     }
-    return false
   } 
+  return false
 }
 
 function checkboxValidation() {
@@ -193,6 +196,10 @@ function checkboxValidation() {
 }
 
 function birthDateValidation(entry) {
-  let reg = /(\d{4})-(\d{2})-(\d{2})/;
-  return reg.test(entry.value)
+  if(!entry){
+    return false;
+  }
+  const bdDate = new Date(entry).getTime()
+  const currentTime= new Date().getTime()
+  return bdDate >= (currentTime - 86400000) || bdDate <= -220897244400 ? false : true;
 }
